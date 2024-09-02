@@ -4,6 +4,7 @@ namespace App\Sources;
 
 use App\Models\Estabelecimento as Model;
 use App\Contracts\Sources\EstabelecimentoSourceContract as SourceInterface;
+use Core\Exceptions\NotFoundException;
 
 class EstabelecimentoSource implements SourceInterface
 {
@@ -26,5 +27,16 @@ class EstabelecimentoSource implements SourceInterface
       ->when($filter->hasCategoriaEstabelecimentoId(), fn($query) => $query->whereCategoriaEstabelecimentoId($filter->categoriaEstabelecimentoId))
       ->get()
       ->toArray();
+  }
+
+  public function find($id)
+  {
+    $result = Model::where(Model::ID, $id)->first();
+
+    if (is_null($result)) {
+      throw new NotFoundException('Estabelecimento', $id);
+    }
+
+    return $result;
   }
 }
