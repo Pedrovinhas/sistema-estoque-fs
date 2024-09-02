@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EstabelecimentoController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
@@ -22,15 +24,14 @@ Route::middleware('auth')->group(function () {
     Route::post('/', [EstabelecimentoController::class, 'create']);
 
     Route::prefix('/{estabelecimentoId}')->group(function () {
-      Route::get('/pedidos', [EstabelecimentoController::class, 'getPedidos']);
+      Route::get('/pedidos', [EstabelecimentoController::class, 'listPedidos']);
     });
   });
 
   Route::prefix('produtos')->group(function () {
-    Route::get('/', [ProdutoController::class, 'get']);
+    Route::get('/', [ProdutoController::class, 'list']);
     Route::post('/', [ProdutoController::class, 'create']);
   });
-
 
   Route::prefix('pedidos')->group(function () {
     Route::post('/', [PedidoController::class, 'create']);
