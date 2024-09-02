@@ -8,6 +8,6 @@ class CreateEstabelecimentoDto
     public readonly string $name,
     public readonly string $description,
     public readonly string $cep,
-    public readonly string $categoria_estabelecimento_id
+    public readonly int $categoria_estabelecimento_id
   ) {}
 }
