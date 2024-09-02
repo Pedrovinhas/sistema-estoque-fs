@@ -10,4 +10,5 @@ interface EstabelecimentoSourceContract
 
   public function getAll(EstabelecimentoFilter $filter): array;
 
+  public function find(int $id);
 }
