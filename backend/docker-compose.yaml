@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  back:
+    build: .
+    container_name: sistema-estoque-back
+    ports:
+    - "8000:8000"
+    volumes:
+      - .:/application
+    networks:
+      - app-network
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16.2-alpine3.19
+    container_name: db-sistema-estoque
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /data/postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db:
