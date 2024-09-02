@@ -6,9 +6,15 @@ use Illuminate\Support\ServiceProvider;
 use App\Contracts\Sources\CategoriaEstabelecimentoSourceContract;
 use App\Contracts\Sources\CategoriaProdutoSourceContract;
 use App\Contracts\Sources\EstabelecimentoSourceContract;
+use App\Contracts\Sources\PedidoSourceContract;
+use App\Contracts\Sources\ProdutoSourceContract;
+use App\Contracts\Sources\UserSourceContract;
 use App\Sources\CategoriaEstabelecimentoSource;
 use App\Sources\CategoriaProdutoSource;
 use App\Sources\EstabelecimentoSource;
+use App\Sources\PedidoSource;
+use App\Sources\ProdutoSource;
+use App\Sources\UserSource;
 
 class SourceServiceProvider extends ServiceProvider
 {
@@ -16,6 +22,9 @@ class SourceServiceProvider extends ServiceProvider
     CategoriaEstabelecimentoSourceContract::class => CategoriaEstabelecimentoSource::class,
     CategoriaProdutoSourceContract::class => CategoriaProdutoSource::class,
     EstabelecimentoSourceContract::class => EstabelecimentoSource::class,
+    ProdutoSourceContract::class => ProdutoSource::class,
+    PedidoSourceContract::class => PedidoSource::class,
+    UserSourceContract::class => UserSource::class,
   ];
 
   /**
