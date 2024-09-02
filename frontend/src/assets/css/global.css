@@ -1,0 +1,7 @@
+html {
+  font-size: 13px;
+}
+
+.v-toast {
+  z-index: 9999;
+}
