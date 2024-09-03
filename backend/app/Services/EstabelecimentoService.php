@@ -27,23 +27,4 @@ class EstabelecimentoService implements Contract
 
     return $categorias;
   }
-
-  public function getPedidos(string $estabelecimentoId): array
-  {
-    $this->source->find($estabelecimentoId);
-
-    $pedidos = $this->pedidoSource->getByEstabelecimentoId($estabelecimentoId);
-
-    // TODO: Mudar retorno para tirar array associativo
-    $pedidosDto = array_map(function ($pedido) {
-      return new GetPedidoDto(
-        $pedido['produto']['nome'],
-        $pedido['produto']['valor'],
-        $pedido['estabelecimento']['nome'],
-        $pedido['cliente']['nome']
-      );
-    }, $pedidos);
-
-    return $pedidosDto;
-  }
 }
