@@ -19,7 +19,7 @@ class CategoriaProdutoSource implements SourceInterface
   public function getAll($filter): array
   {
     return Model::query()
-      ->when($filter->hasName(), fn($query) => $query->whereNome($filter->name))
+      ->when($filter->hasName(), fn($query) => $query->whereLikeName($filter->name))
       ->get()
       ->toArray();
   }
