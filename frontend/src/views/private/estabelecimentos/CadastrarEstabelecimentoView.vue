@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useFieldValue, useForm } from 'vee-validate';
+import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/yup';
 import { useRouter } from 'vue-router';
 import toast from '@/plugins/vueToast';
@@ -34,7 +34,12 @@ const onSubmit = async () => {
 };
 
 onMounted(async () => {
-  categorias.value = (await categoriaService.getAllCategoriasEstabelecimento()).data;
+  const categoriasResponse = await categoriaService.getAllCategoriasEstabelecimento();
+
+  categorias.value = categoriasResponse.map((categoria: any) => ({
+    id: categoria.id,
+    name: categoria.nome,
+  }));
 });
 
 const searchCep = async () => {
