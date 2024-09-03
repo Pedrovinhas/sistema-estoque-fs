@@ -1,7 +1,6 @@
 import type { CreateLoginRequest, GetAuthResponse }  from './interfaces/Login';
 import ApiService from '@/services/api/apiService';
 
-
 export class AuthService extends ApiService {
   constructor() {
     super('auth', null);

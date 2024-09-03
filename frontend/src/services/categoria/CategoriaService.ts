@@ -13,7 +13,7 @@ export default class CategoriaService extends ApiService {
     ): Promise<CreateCategoriaRequest> {
         try {
             const { data } = await this.apiInstance.post(
-                '/categorias-estabelecimento',
+                '/categorias/estabelecimento',
                 categoria
             );
 
@@ -28,7 +28,7 @@ export default class CategoriaService extends ApiService {
   ): Promise<CreateCategoriaRequest> {
       try {
           const { data } = await this.apiInstance.post(
-              '/categorias-estabelecimento',
+              '/categorias/produto',
               categoria
           );
 
@@ -43,13 +43,12 @@ export default class CategoriaService extends ApiService {
     ): Promise<GetAllCategoriasResponse> {
       try {
         // eslint-disable-next-line prefer-const
-        let filter: any = {
-          quantidade: params?.quantidade,
-        };
+        let filter: any = {};
+
         if(params?.name !== undefined) filter.name = params?.name; 
         
         const { data } = await this.apiInstance.get<GetAllCategoriasResponse>(
-        'categorias-estabelecimento',
+        'categorias/estabelecimento',
         {
           params: filter,
         }
@@ -67,13 +66,12 @@ export default class CategoriaService extends ApiService {
     ): Promise<GetAllCategoriasResponse> {
       try {
         // eslint-disable-next-line prefer-const
-        let filter: any = {
-          quantidade: params?.quantidade,
-        };
+        let filter: any = {};
+        
         if(params?.name !== undefined) filter.name = params?.name; 
         
         const { data } = await this.apiInstance.get<GetAllCategoriasResponse>(
-        'categorias-produto',
+        'categorias/produto',
         {
           params: filter,
         }

@@ -1,6 +1,6 @@
-import type { Paginated } from '@/common/types/Paginated';
-
-export type GetAllCategoriasResponse = Paginated<{
+type Categoria = {
   id: number;
   name: string;
-}>;
+};
+
+export type GetAllCategoriasResponse = Categoria[];
