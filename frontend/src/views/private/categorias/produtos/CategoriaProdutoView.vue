@@ -57,23 +57,6 @@ onMounted(async () => {
               <MyButton>Cadastrar Categoria de Produto</MyButton>
             </RouterLink>
           </template>
-
-          <template #rodape>
-            <TableFooter :paginacao="categoriasStore.paginacao" @proximo="() => {
-              categoriasStore.paginacao.page += 1;
-              handleGetAllCategoriaProdutos();
-            }
-              " @anterior="() => {
-                categoriasStore.paginacao.page -= 1;
-                handleGetAllCategoriaProdutos();
-              }
-                " @atualizar-quantidade="(quantidade: any) => {
-                  categoriasStore.paginacao.quantidade = quantidade;
-                  categoriasStore.paginacao.page = 1;
-                  handleGetAllCategoriaProdutos();
-                }
-                  " />
-          </template>
         </MyTable>
       </v-col>
     </v-row>
