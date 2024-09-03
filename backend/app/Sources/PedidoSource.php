@@ -25,4 +25,12 @@ class PedidoSource implements SourceInterface
       ->get()
       ->toArray();
   }
+
+  public function getByUserId(string $userId): array
+  {
+    return Model::query()
+      ->where(Model::USER_ID ,'=', $userId)
+      ->get()
+      ->toArray();
+  }
 }
