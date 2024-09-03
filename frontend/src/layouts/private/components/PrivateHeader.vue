@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import MyIcon from '@/components/MyIcon.vue';
 import MyTypography from '@/components/MyTypography.vue';
+import { useUserStore } from '@/stores';
+import { computed } from 'vue';
 
-withDefaults(
-  defineProps<{
-    username?: string;
-    balance?: number;
-  }>(),
-  {}
-);
+const userStore = useUserStore();
+
+const username = computed(() => userStore.obterNomeUsuario);
+const balance = computed(() => userStore.getUserBalance);
 
 const emits = defineEmits<{
   toggleDrawer: [];

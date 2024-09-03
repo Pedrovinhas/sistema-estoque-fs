@@ -29,8 +29,7 @@ const logout = () => {
   <v-app class="bg-background">
     <PrivateHeader
       @toggle-drawer="isDrawerOpen = !isDrawerOpen"
-      :balance="userStore.getUserBalance"
-      :username="userStore.obterNomeUsuario" />
+    />
 
     <PrivateSidebar
       v-model="isDrawerOpen"
