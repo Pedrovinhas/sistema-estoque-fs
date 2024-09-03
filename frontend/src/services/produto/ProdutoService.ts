@@ -31,6 +31,8 @@ export default class ProdutoService extends ApiService {
         let filter: any = {};
         
         if(params?.name !== undefined) filter.name = params?.name; 
+
+        if(params?.categoria_produto_id !== undefined) filter.categoria_produto_id = params?.categoria_produto_id; 
         
         const { data } = await this.apiInstance.get<GetAllResponse>(
         'produtos',

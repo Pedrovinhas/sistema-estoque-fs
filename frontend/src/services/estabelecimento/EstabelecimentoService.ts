@@ -32,6 +32,8 @@ export default class EstabelecimentoService extends ApiService {
         
         if(params?.name !== undefined) filter.name = params?.name; 
         
+        if(params?.categoria_estabelecimento_id !== undefined) filter.categoria_estabelecimento_id = params?.categoria_estabelecimento_id; 
+        
         const { data } = await this.apiInstance.get<GetAllResponse>(
         'estabelecimentos',
         {

@@ -7,9 +7,9 @@ export default class UserService extends ApiService {
     super('', token);
   }
 
-  async buscarUsuario(): Promise<GetAuthenticatedResponse> {
+  async buscarUsuario(): Promise<number> {
     try {
-      const { data } = await this.apiInstance.get<GetAuthenticatedResponse>(
+      const { data } = await this.apiInstance.get<number>(
         'auth/user/autenticar'
       );
 
@@ -22,7 +22,7 @@ export default class UserService extends ApiService {
   async obterUsuario(id: number): Promise<GetUserResponse> {
     try {
       const { data } = await this.apiInstance.get<GetUserResponse>(
-        `api/usuarios/${id}`
+        `api/users/${id}`
       );
 
       return data;
