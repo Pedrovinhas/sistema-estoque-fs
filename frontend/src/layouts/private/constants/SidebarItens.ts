@@ -2,6 +2,11 @@ import type { SidebarItem } from '../types/SidebarItem';
 
 const SidebarItens: SidebarItem[] = [
   {
+    title: 'Meus Pedidos',
+    icon: 'mdi-truck-fast',
+    route: { name: 'meus-pedidos' },
+  },
+  {
     title: 'Categorias',
     icon: 'mdi-shape-plus-outline',
     children: [

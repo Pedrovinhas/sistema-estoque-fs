@@ -99,6 +99,11 @@ const router = createRouter({
               component: () => import('@/views/private/produtos/CadastrarProdutoView.vue'),
             },
           ]
+        },
+        {
+          path: '/meus-pedidos',
+          name: 'meus-pedidos',
+          component: () => import('@/views/private/HomeView.vue'),
         }
       ]
     }

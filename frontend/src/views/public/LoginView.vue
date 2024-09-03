@@ -52,7 +52,7 @@ const onSubmit = handleSubmit(async (payload) => {
 
   isLoaded.value = false;
 
-  router.push({ name: 'home' });
+  router.push({ name: 'meus-pedidos' });
 });
 </script>
 

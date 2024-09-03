@@ -1,7 +1,5 @@
 import useService from '@/composables/useService';
-import { useUserStore } from '@/stores';
 import { reactive } from 'vue';
-import { string } from 'yup';
 
 const { pedidoService } = useService();
 
