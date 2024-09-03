@@ -17,6 +17,7 @@ class UserService implements Contract
     $user = $this->source->find($userId);
 
     $userDto = new UserDto(
+      $user->id,
       $user->email,
       $user->nome,
       $user->saldo

@@ -6,7 +6,7 @@ use App\Contracts\Services\EstabelecimentoServiceContract as Contract;
 use App\Contracts\Sources\EstabelecimentoSourceContract as EstabelecimentoSource;
 use App\Contracts\Sources\PedidoSourceContract as PedidoSource;
 use App\Dtos\Estabelecimento\CreateEstabelecimentoDto;
-use App\Dtos\Pedido\GetPedidoDto;
+use App\Dtos\Estabelecimento\GetEstabelecimentoDto;
 use App\Filters\EstabelecimentoFilter;
 
 class EstabelecimentoService implements Contract
@@ -23,8 +23,19 @@ class EstabelecimentoService implements Contract
 
   public function getAll(EstabelecimentoFilter $filter): array
   {
-    $categorias = $this->source->getAll($filter);
+    $estabelecimentos = $this->source->getAll($filter);
 
-    return $categorias;
+    // TODO: Mudar retorno de Collection para tirar array associativo
+    $estabelecimentosDto = array_map(function ($estabelecimento) {
+      return new GetEstabelecimentoDto(
+        $estabelecimento['id'],
+        $estabelecimento['nome'],
+        $estabelecimento['descricao'],
+        $estabelecimento['cep'],
+        $estabelecimento['categoria']['nome']
+      );
+    }, $estabelecimentos);
+
+    return $estabelecimentosDto;
   }
 }

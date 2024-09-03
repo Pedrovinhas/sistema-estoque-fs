@@ -26,10 +26,12 @@ class ProdutoService implements Contract
     // TODO: Mudar retorno para tirar array associativo
     $produtosDto = array_map(function($produto) {
       return new GetProdutoDto(
+          $produto['id'],
           $produto['nome'],
           $produto['valor'],
           $produto['categoria']['nome'],
-          $produto['estabelecimento']['nome']
+          $produto['estabelecimento']['id'],
+          $produto['estabelecimento']['nome'],
       );
   }, $produtos);
 
