@@ -26,11 +26,4 @@ class EstabelecimentoController extends Controller
     
     return $categorias;
   }
-
-  public function listPedidos(string $estabelecimentoId)
-  {
-    $pedidos = $this->service->getPedidos($estabelecimentoId);
-
-    return $pedidos;
-  }
 }
