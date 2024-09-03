@@ -23,7 +23,15 @@ class PedidoController extends Controller
   {
     $pedidos = $this->service->getEstabelecimentoPedidos($estabelecimentoId);
 
-    return $pedidos;
+    $serializedData = array_map(function ($pedido) {
+      return [
+        'produto_name' => $pedido->produto_name,
+        'produto_value' => $pedido->produto_value,
+        'receiver' => $pedido->receiver,
+      ];
+    }, $pedidos);
+
+    return response()->json($serializedData);
   }
 
   public function listPedidosByUser(int $userId)

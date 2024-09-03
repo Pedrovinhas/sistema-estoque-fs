@@ -22,8 +22,8 @@ class EstabelecimentoController extends Controller
 
   public function list(GetAllRequest $request)
   {
-    $categorias = $this->service->getAll($request->getFilter());
+    $estabelecimentos = $this->service->getAll($request->getFilter());
     
-    return $categorias;
+    return response()->json($estabelecimentos);
   }
 }
