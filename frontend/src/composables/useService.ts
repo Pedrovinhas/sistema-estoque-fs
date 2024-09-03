@@ -5,6 +5,7 @@ import CategoriaService from '@/services/categoria/CategoriaService';
 import EstabelecimentoService from '@/services/estabelecimento/EstabelecimentoService';
 import ProdutoService from '@/services/produto/ProdutoService';
 import UserService from '@/services/user/UserService';
+import PedidoService from '@/services/pedido/PedidoService';
 
 export default function useService() {
   const authStore = useAuthStore();
@@ -17,6 +18,7 @@ export default function useService() {
     userService: new UserService(storeToken),
     categoriaService: new CategoriaService(storeToken),
     estabelecimentoService: new EstabelecimentoService(storeToken),
-    produtoService: new ProdutoService(storeToken)
+    produtoService: new ProdutoService(storeToken),
+    pedidoService: new PedidoService(storeToken)
   };
 }

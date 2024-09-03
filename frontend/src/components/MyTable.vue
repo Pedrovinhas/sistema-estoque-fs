@@ -84,7 +84,7 @@ withDefaults(
           muted
           weight="bold"
           class="text-center pa-6">
-        Nada para visualizar
+        Nenhum conteúdo para visualizar
       </MyTypography>
     </template>
 
