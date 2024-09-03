@@ -50,7 +50,9 @@ const router = createRouter({
                 {
                   path: '',
                   name: 'categoria-estabelecimentos',
-                  component: () =>import('@/views/private/categorias/estabelecimentos/CategoriaEstabelecimentoViewww.vue')
+                  component: () => import('@/views/private/HomeView.vue'),
+
+                  // component: () =>import('@/views/private/categorias/estabelecimentos/CategoriaEstabelecimentoViewww.vue')
                 },
                 {
                   path: 'cadastrar',
@@ -76,23 +78,9 @@ const router = createRouter({
               component: () =>import('@/views/private/estabelecimentos/CadastrarEstabelecimentoView.vue')
             },
             {
-              path: 'pedidos',
-              children: [
-                {
-                  path: ':id/pedidos',
-                  name: 'pedidos',
-                  component: () => import('@/views/private/HomeView.vue'),
-
-                  // component: () =>import('@/views/private/categorias/produtos/CategoriaProdutoView.vue')
-                },
-                {
-                  path: 'cadastrar',
-                  name: 'cadastrar-pedido',
-                  component: () => import('@/views/private/HomeView.vue'),
-
-                  // component: () =>import('@/views/private/categorias/produtos/CadastrarCategoriaProdutoView.vue')
-                }
-              ]
+              path: ':id/pedidos',
+              name: 'pedidos',
+              component: () => import('@/views/private/pedidos/PedidoView.vue'),
             },
           ]
         },

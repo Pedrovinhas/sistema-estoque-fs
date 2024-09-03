@@ -44,7 +44,11 @@ const onSubmit = handleSubmit(async (payload) => {
     isLoaded.value = false;
   });
 
-  await userStore.buscarUsuario(user);
+  const userData = await userService.obterUsuario(user).finally(() => {
+    isLoaded.value = false;
+  })
+
+  await userStore.buscarUsuario(userData);
 
   isLoaded.value = false;
 
