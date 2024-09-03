@@ -20,8 +20,10 @@ class Estabelecimento extends Model
     const DESCRIPTION = 'descricao';
     const CEP = 'cep';
     const CATEGORIA_ESTABELECIMENTO_ID = 'categoria_estabelecimento_id';
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+    const DELETED_AT = 'deleted_at';
 
     const ESTABELECIMENTO_ID = 'estabelecimento_id';
 
@@ -34,7 +36,12 @@ class Estabelecimento extends Model
 
     protected $hidden = [
       self::CREATED_AT,
-      self::UPDATED_AT
+      self::UPDATED_AT,
+      self::DELETED_AT
+    ];
+
+    protected $with = [
+      'categoria:id,nome'
     ];
 
     public function categoria(): BelongsTo

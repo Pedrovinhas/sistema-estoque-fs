@@ -40,7 +40,7 @@ class Produto extends Model
     self::DELETED_AT
   ];
 
-  protected $with = ['estabelecimento', 'categoria'];
+  protected $with = ['estabelecimento:id,nome', 'categoria'];
 
   protected function casts(): array
   {
