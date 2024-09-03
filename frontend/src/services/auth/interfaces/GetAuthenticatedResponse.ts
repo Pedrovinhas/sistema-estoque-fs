@@ -1,4 +1,4 @@
-export interface GetUserResponse {
+export interface GetAuthenticatedResponse {
   id: number;
   name: string;
   email: string;

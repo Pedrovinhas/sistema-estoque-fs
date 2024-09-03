@@ -28,9 +28,8 @@ export default class ProdutoService extends ApiService {
     ): Promise<GetAllResponse> {
       try {
         // eslint-disable-next-line prefer-const
-        let filter: any = {
-          quantidade: params?.quantidade,
-        };
+        let filter: any = {};
+        
         if(params?.name !== undefined) filter.name = params?.name; 
         
         const { data } = await this.apiInstance.get<GetAllResponse>(
