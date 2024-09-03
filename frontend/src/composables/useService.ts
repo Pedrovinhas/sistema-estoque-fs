@@ -4,6 +4,7 @@ import ViaCepService from '@/services/viacep/ViaCepService';
 import CategoriaService from '@/services/categoria/CategoriaService';
 import EstabelecimentoService from '@/services/estabelecimento/EstabelecimentoService';
 import ProdutoService from '@/services/produto/ProdutoService';
+import UserService from '@/services/user/UserService';
 
 export default function useService() {
   const authStore = useAuthStore();
@@ -13,6 +14,7 @@ export default function useService() {
   return {
     authService: new AuthService(),
     cepService: new ViaCepService(),
+    userService: new UserService(storeToken),
     categoriaService: new CategoriaService(storeToken),
     estabelecimentoService: new EstabelecimentoService(storeToken),
     produtoService: new ProdutoService(storeToken)
