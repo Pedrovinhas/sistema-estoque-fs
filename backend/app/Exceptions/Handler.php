@@ -32,8 +32,19 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    // TODO: Refatorar por completo o Handler de Erro (feito às pressas)
     public function register(): void
     {
+      $this->renderable(function (AuthenticationException $e, Request $request): JsonResponse {
+        return response()->json([
+            'error' => [
+                'type' => 'AuthenticationException',
+                'message' => $e->getMessage(),
+                'code' => $e->getCode(),
+            ]
+        ], Response::HTTP_UNAUTHORIZED);
+    });
+
         $this->renderable(function (NotFoundException $e, Request $request): JsonResponse {
             return $this->renderCustomException($e, $request, Response::HTTP_UNPROCESSABLE_ENTITY, [
                 'resource' => $e->getName(),
@@ -55,9 +66,9 @@ class Handler extends ExceptionHandler
   
         $this->renderable(function (ValidationException $e, Request $request): JsonResponse {
             return $this->renderCustomException($e, $request, Response::HTTP_BAD_REQUEST, [
-                'error_code' => $e->getErrorCode(),
-                'error_type' => $e->getType(),
-                'details' => $e->getDetails(),
+                'type'    => $e->getType(),
+                'code'    => $e->getErrorCode(),
+                'message' => $e->getDetails(),
             ]);
         });
     }
