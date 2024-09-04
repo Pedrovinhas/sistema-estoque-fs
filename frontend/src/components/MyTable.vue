@@ -51,6 +51,7 @@ withDefaults(
       density="compact"
       :items="items"
       items-per-page="10"
+      items-per-page-text="Itens por página"
       :headers="headers"
       :class="`bg-${color}`">
     <template #headers="{ columns }">
@@ -86,10 +87,6 @@ withDefaults(
           class="text-center pa-6">
         Nenhum conteúdo para visualizar
       </MyTypography>
-    </template>
-
-    <template #bottom>
-      <slot name="rodape" v-if="items.length > 0"/>
     </template>
   </v-data-table>
 </template>

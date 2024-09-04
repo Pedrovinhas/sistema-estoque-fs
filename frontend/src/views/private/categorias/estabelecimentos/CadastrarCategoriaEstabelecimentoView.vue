@@ -39,7 +39,7 @@ const onSubmit = async () => {
                 <v-col class="mb-8">
                   <v-row class="mb-0 mt-2">
                     <v-col cols="12" lg="4" md="6">
-                      <ControlledTextInput name="nome" label="Nome da Categoria" maxLength="200" />
+                      <ControlledTextInput name="name" label="Nome da Categoria" maxLength="200" />
                     </v-col>
                   </v-row>
                 </v-col>
