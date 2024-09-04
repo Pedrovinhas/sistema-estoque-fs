@@ -4,7 +4,6 @@ namespace App\Sources;
 
 use App\Models\CategoriaEstabelecimento as Model;
 use App\Contracts\Sources\CategoriaEstabelecimentoSourceContract as SourceInterface;
-use Core\Exceptions\NotFoundException;
 
 class CategoriaEstabelecimentoSource implements SourceInterface
 {
@@ -20,7 +19,7 @@ class CategoriaEstabelecimentoSource implements SourceInterface
   public function getAll($filter): array
   {
     return Model::query()
-      ->when($filter->hasName(), fn($query) => $query->whereNome($filter->name))
+      ->when($filter->hasName(), fn($query) => $query->whereLikeName($filter->name))
       ->get()
       ->toArray();
   }
