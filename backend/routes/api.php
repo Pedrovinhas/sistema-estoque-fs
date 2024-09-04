@@ -40,7 +40,6 @@ Route::middleware('auth')->group(function () {
   });
 
   Route::prefix('pedidos')->group(function () {
-    Route::get('/', [PedidoController::class, 'listWithFilters']);
     Route::post('/', [PedidoController::class, 'create']);
   });
 });
