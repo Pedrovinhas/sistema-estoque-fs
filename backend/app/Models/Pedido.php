@@ -51,4 +51,10 @@ class Pedido extends Model
   {
     return $this->belongsTo(User::class, self::USER_ID);
   }
+
+  public function scopeFilterByName($query, $name)
+  {
+    return $query->whereRelation('produto', 'nome', 'ilike', "%$name%")
+      ->orWhereRelation('estabelecimento', 'nome', 'ilike', "%$name%");
+  }
 }
