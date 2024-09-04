@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Response;
 use App\Contracts\Services\PedidoServiceContract as PedidoService;
 use App\Http\Requests\Pedido\CreatePedidoRequest;
+use App\Http\Requests\Pedido\GetAllPedidosUserRequest;
 
 class PedidoController extends Controller
 {
@@ -34,9 +35,9 @@ class PedidoController extends Controller
     return response()->json($serializedData);
   }
 
-  public function listPedidosByUser(int $userId)
+  public function listPedidosByUser(int $userId, GetAllPedidosUserRequest $request)
   {
-    $pedidos = $this->service->getUsuarioPedidos($userId);
+    $pedidos = $this->service->getUsuarioPedidos($userId, $request->getFilter());
 
     // TODO: Usar resource para serializar os dados
     $serializedData = array_map(function ($pedido) {

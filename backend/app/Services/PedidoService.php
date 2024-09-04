@@ -8,6 +8,7 @@ use App\Contracts\Sources\UserSourceContract as UserSource;
 use App\Contracts\Sources\ProdutoSourceContract as ProdutoSource;
 use App\Dtos\Pedido\CreatePedidoDto;
 use App\Dtos\Pedido\GetPedidoDto;
+use App\Filters\PedidoFilter;
 use App\Sources\EstabelecimentoSource;
 use Core\Exceptions\InsufficientBalanceException;
 use Illuminate\Support\Facades\DB;
@@ -58,11 +59,11 @@ class PedidoService implements Contract
     return $pedidosDto;
   }
 
-  public function getUsuarioPedidos(int $userId): array
+  public function getUsuarioPedidos(int $userId, PedidoFilter $filter): array
   {
     $this->userSource->find($userId);
 
-    $pedidos = $this->source->getByUserId($userId);
+    $pedidos = $this->source->getByUserId($userId, $filter);
 
     // TODO: Mudar retorno para tirar array associativo
     $pedidosDto = array_map(function ($pedido) {
