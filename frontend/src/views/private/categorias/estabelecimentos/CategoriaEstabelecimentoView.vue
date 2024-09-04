@@ -7,6 +7,7 @@ import HeaderCard from '@/components/HeaderCard.vue';
 import MyButton from '@/components/MyButton.vue';
 import useService from '@/composables/useService';
 import ControlledTextInput from '@/components/ControlledTextInput.vue';
+import MyIcon from '@/components/MyIcon.vue';
 
 const { categoriaService } = useService();
 const { handleSubmit, resetForm } = useForm();
@@ -62,8 +63,10 @@ onMounted(async () => {
             <MyButton variant="text" @click="clearSearch">
               Limpar
             </MyButton>
-
-            <MyButton type="submit">CONSULTAR</MyButton>
+            <MyButton type="submit" class="ml-2">
+              <span>Filtrar</span>
+              <MyIcon name="mdi-filter-variant" class="ml-1"/>
+            </MyButton>
           </template>
         </HeaderCard>
 
