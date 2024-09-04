@@ -23,7 +23,7 @@ interface Categoria {
 const categorias = ref<Categoria[]>([]);
 
 const handleGetAllCategorias = handleSubmit(async (payload: any) => {
-  const categoriasResponse = await categoriaService.getAllCategoriasProduto({
+  const categoriasResponse = await categoriaService.getAllCategoriasEstabelecimento({
     ...payload
   });
 
@@ -46,8 +46,8 @@ onMounted(async () => {
   <v-container>
     <v-row class="mb-7">
       <v-col cols="12" class="px-0">
-        <HeaderCard class="mb-8" title="Consulta de Categoria de Produtos"
-          subtitle="Consulte as categorias dos produtos cadastrados no sistema" @submit="handleGetAllCategorias">
+        <HeaderCard class="mb-8" title="Consulta de Categoria de Estabelecimento"
+          subtitle="Consulte as categorias dos estabelecimento cadastrados no sistema" @submit="handleGetAllCategorias">
           <template #inputs>
             <v-container>
               <v-row class="mb-0 mt-2">
@@ -67,12 +67,12 @@ onMounted(async () => {
           </template>
         </HeaderCard>
 
-        <MyTable title="Categoria de Produtos Cadastrados"
-          subtitle="Listagem de categorias de produtos cadastrados no sistema" :headers="TABLE_HEADERS"
+        <MyTable title="Categoria de Estabelecimentos Cadastrados"
+          subtitle="Listagem de categorias de estabelecimentos cadastrados no sistema" :headers="TABLE_HEADERS"
           :items="categorias">
           <template #header-actions>
-            <RouterLink  :to="{ name: 'cadastrar-categoria-produto' }">
-              <MyButton>Cadastrar Categoria de Produto</MyButton>
+            <RouterLink  :to="{ name: 'cadastrar-categoria-estabelecimento' }">
+              <MyButton>Cadastrar Categoria de Estabelecimento</MyButton>
             </RouterLink>
           </template>
         </MyTable>

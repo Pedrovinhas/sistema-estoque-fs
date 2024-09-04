@@ -12,11 +12,9 @@ import cadastrarCategoriaProdutoSchema from './validations/cadastrarCategoriaPro
 const { categoriaService } = useService();
 const router = useRouter();
 
-
 const { handleSubmit, isSubmitting } = useForm({
   validationSchema: toTypedSchema(cadastrarCategoriaProdutoSchema),
 });
-
 
 const onSubmit = async () => {
   await handleSubmit(async (payload) => {

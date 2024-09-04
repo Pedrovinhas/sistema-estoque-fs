@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { useForm } from 'vee-validate';
-import { RouterLink } from 'vue-router';
 import { useUserStore } from '@/stores';
 import useService from '@/composables/useService';
 import MyTable from '@/components/MyTable.vue';
 import HeaderCard from '@/components/HeaderCard.vue';
 import MyButton from '@/components/MyButton.vue';
 import ControlledTextInput from '@/components/ControlledTextInput.vue';
-import ControlledSelect from '@/components/ControlledSelect.vue';
 
 const userStore = useUserStore();
 const { pedidoService } = useService();
