@@ -3,20 +3,10 @@
 namespace App\Http\Requests\Estabelecimento;
 
 use App\Dtos\Estabelecimento\CreateEstabelecimentoDto as Dto;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class CreateEstabelecimentoRequest extends FormRequest
+class CreateEstabelecimentoRequest extends BaseRequest
 {
-  /**
-   * Determine if the user is authorized to make this request.
-   *
-   * @return bool
-   */
-  public function authorize()
-  {
-    return true;
-  }
-
   /**
    * Get the validation rules that apply to the request.
    *

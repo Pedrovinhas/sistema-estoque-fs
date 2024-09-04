@@ -2,21 +2,11 @@
 
 namespace App\Http\Requests\Categoria;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Dtos\Categoria\CreateCategoriaProdutoDto as Dto;
+use App\Http\Requests\BaseRequest;
 
-class CreateCategoriaProdutoRequest extends FormRequest
+class CreateCategoriaProdutoRequest extends BaseRequest
 {
-  /**
-   * Determine if the user is authorized to make this request.
-   *
-   * @return bool
-   */
-  public function authorize()
-  {
-    return true;
-  }
-
   /**
    * Get the validation rules that apply to the request.
    *

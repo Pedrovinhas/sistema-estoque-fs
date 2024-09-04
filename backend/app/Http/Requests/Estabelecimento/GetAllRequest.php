@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Estabelecimento;
 
 use App\Filters\EstabelecimentoFilter;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\BaseRequest;
 
-class GetAllRequest extends FormRequest
+class GetAllRequest extends BaseRequest
 {
   public function rules(): array
   {
