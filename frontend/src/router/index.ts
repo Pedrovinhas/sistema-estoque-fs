@@ -50,9 +50,7 @@ const router = createRouter({
                 {
                   path: '',
                   name: 'categoria-estabelecimentos',
-                  component: () => import('@/views/private/HomeView.vue'),
-
-                  // component: () =>import('@/views/private/categorias/estabelecimentos/CategoriaEstabelecimentoViewww.vue')
+                  component: () =>import('@/views/private/categorias/estabelecimentos/CategoriaEstabelecimentoView.vue')
                 },
                 {
                   path: 'cadastrar',
@@ -103,7 +101,7 @@ const router = createRouter({
         {
           path: '/meus-pedidos',
           name: 'meus-pedidos',
-          component: () => import('@/views/private/HomeView.vue'),
+          component: () => import('@/views/private/pedidos/MeuPedidoView.vue'),
         }
       ]
     }
