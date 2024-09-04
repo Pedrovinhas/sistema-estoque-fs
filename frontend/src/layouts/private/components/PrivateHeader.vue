@@ -21,10 +21,21 @@ const emits = defineEmits<{
       @click="emits('toggleDrawer')"></v-app-bar-nav-icon>
 
     <div class="d-flex justify-end align-center w-100 pr-8">
-      <MyIcon name="mdi-account" />
-      <MyTypography variant="body-2" weight="black" class="ml-2">
-        {{ username }} - R$ {{ balance }}
-      </MyTypography>
+      <div>
+        <div class="d-flex align-center">
+        <MyIcon name="mdi-account" />
+        <MyTypography variant="body-2" weight="black" class="ml-2">
+          {{ username }}
+        </MyTypography>
+       </div>
+       <div class="d-flex align-center">
+        <MyIcon name="mdi-cash" />
+        <MyTypography variant="body-1" weight="black" class="ml-2">
+          R$ {{ balance }}
+        </MyTypography>
+       </div>
+  
+      </div>
     </div>
   </v-app-bar>
 </template>

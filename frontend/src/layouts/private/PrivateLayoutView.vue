@@ -36,7 +36,7 @@ const logout = () => {
       :current-path="route.path"
       :itens="SidebarItens"
       @logout="logout" />
-    <v-main class="ma-12">
+    <v-main class="mt-8 mr-8 ml-8">
       <router-view />
     </v-main>
   </v-app>
