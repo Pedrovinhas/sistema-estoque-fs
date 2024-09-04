@@ -10,7 +10,7 @@ export default class UserService extends ApiService {
   async buscarUsuario(): Promise<number> {
     try {
       const { data } = await this.apiInstance.get<number>(
-        'auth/user/autenticar'
+        'auth/user/authenticated'
       );
 
       return data;
