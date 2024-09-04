@@ -17,9 +17,7 @@ import cadastrarProdutoSchema from './validations/cadastrarProdutoSchema';
 const { produtoService, categoriaService, estabelecimentoService } = useService();
 const router = useRouter();
 
-const categorias = ref<{ name: string; id: number }[]>([]);
-
-// const categorias = ref<DomainList>([]);
+const categorias = ref<DomainList>([]);
 const estabelecimentos = ref<DomainList>([]);
 
 const { handleSubmit, isSubmitting } = useForm({
@@ -41,20 +39,26 @@ const onSubmit = async () => {
   })();
 };
 
-onMounted(async () => {
+const getAllEstabelecimentos = async () => {
+  const estabelecimentosResponse = await estabelecimentoService.getAll();
+
+  estabelecimentos.value = estabelecimentosResponse.map((estabelecimento: any) => ({
+    id: estabelecimento.id,
+    name: estabelecimento.name,
+  }));
+};
+
+const getAllCategorias = async () => {
   const categoriasResponse = await categoriaService.getAllCategoriasProduto();
+  categorias.value = categoriasResponse.map((categoria: any) => ({
+    id: categoria.id,
+    name: categoria.nome,
+  }));
+};
 
-    categorias.value = categoriasResponse.map((categoria: any) => ({
-      id: categoria.id,
-      name: categoria.nome,
-    }));
-
-    const estabelecimentoResponse = await estabelecimentoService.getAll();
-
-    estabelecimentos.value = estabelecimentoResponse.map((estabelecimento: any) => ({
-      id: estabelecimento.id,
-      name: estabelecimento.nome,
-    }));
+onMounted(async () => {
+  await getAllCategorias();
+  await getAllEstabelecimentos();
 });
 </script>
 

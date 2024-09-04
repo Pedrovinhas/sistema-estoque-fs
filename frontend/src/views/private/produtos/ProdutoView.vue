@@ -11,7 +11,7 @@ import ControlledTextInput from '@/components/ControlledTextInput.vue';
 import ControlledSelect from '@/components/ControlledSelect.vue';
 
 const userStore = useUserStore();
-const { produtoService, pedidoService, userService, categoriaService } = useService();
+const { produtoService, pedidoService, userService, categoriaService, estabelecimentoService } = useService();
 const { handleSubmit, resetForm } = useForm();
 const userId = userStore.obterIdUsuario;
 
@@ -34,6 +34,7 @@ interface Estabelecimento {
 
 const produtos = ref<Estabelecimento[]>([]);
 const categorias = ref<{ id: number; name: string }[]>([]);
+const estabelecimentos = ref<{ id: number; name: string }[]>([]);
 
 const handleGetAllProdutos = handleSubmit(async (payload: any) => {
   console.log(payload);
@@ -59,6 +60,15 @@ const getAllCategorias = async () => {
   }));
 };
 
+const getAllEstabelecimentos = async () => {
+  const estabelecimentosResponse = await estabelecimentoService.getAll();
+
+  estabelecimentos.value = estabelecimentosResponse.map((estabelecimento: any) => ({
+    id: estabelecimento.id,
+    name: estabelecimento.name,
+  }));
+};
+
 const createPedido = async (produtoId: number, estabelecimentoId: number, userId: number) => {
   await pedidoService.create({
     produto_id: produtoId,
@@ -78,6 +88,7 @@ onMounted(async () => {
   clearSearch();
   await handleGetAllProdutos();
   await getAllCategorias();
+  await getAllEstabelecimentos();
 });
 </script>
 
@@ -95,6 +106,9 @@ onMounted(async () => {
                 </v-col>
                 <v-col cols="12" lg="4" md="4">
                   <ControlledSelect name="categoria_produto_id" label="Categoria" :items="categorias" />
+                </v-col>
+                <v-col cols="12" lg="4" md="4">
+                  <ControlledSelect name="estabelecimento_id" label="Estabelecimento" :items="estabelecimentos" />
                 </v-col>
               </v-row>
             </v-container>
