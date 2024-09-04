@@ -3,6 +3,7 @@
 namespace App\Contracts\Services;
 
 use App\Dtos\Pedido\CreatePedidoDto;
+use App\Filters\PedidoFilter;
 
 interface PedidoServiceContract
 {
@@ -10,5 +11,5 @@ interface PedidoServiceContract
 
   public function getEstabelecimentoPedidos(int $estabelecimentoId): array;
 
-  public function getUsuarioPedidos(int $userId): array;
+  public function getUsuarioPedidos(int $userId, PedidoFilter $filter): array;
 }
