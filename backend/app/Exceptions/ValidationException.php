@@ -2,8 +2,6 @@
 
 namespace App\Exceptions;
 
-use App\Constants\ErrorCode;
-use App\Constants\ErrorType;
 use Illuminate\Contracts\Validation\Validator;
 use Throwable;
 
@@ -17,7 +15,7 @@ class ValidationException extends Exception
   ) {
     parent::__construct(
       $errorCode,
-      ErrorType::VALIDATION,
+      'Validation Error',
       $message,
       previous: $previous
     );
@@ -32,7 +30,7 @@ class ValidationException extends Exception
   public static function requestValidation(Validator $validator, ?Throwable $previous = null)
   {
     return new static(
-      ErrorCode::REQUEST_VALIDATION,
+      '401',
       'Falha na validação dos dados da requisição',
       previous: $previous,
       validator: $validator,
@@ -42,7 +40,7 @@ class ValidationException extends Exception
   public static function invalidArgument(string $field, string $rule)
   {
     $exception =  new static(
-      ErrorCode::INVALID_ARGUMENT,
+      '401',
       'Os argumentos enviados estão inválidos',
     );
 
